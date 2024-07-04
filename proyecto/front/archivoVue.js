@@ -1,7 +1,5 @@
-// Crear la instancia de Vue
 const app = Vue.createApp({});
 
-// Definir y registrar componentes globales
 app.component('header-component', {
 template: `
     <header class="bg-success text-white py-3">
@@ -15,6 +13,7 @@ template: `
                         <a href="index.html" class="text-white mx-3">Inicio</a>
                         <a href="#" class="text-white mx-3">Productos</a>
                         <a href="#" class="text-white mx-3">Nosotros</a>
+                        <a href="#" class="text-white mx-3">Iniciar Sesion</a>
                     </nav>
                 </div>
             </div>
