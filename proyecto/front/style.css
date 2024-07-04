@@ -1,29 +1,25 @@
-/* Estilos personalizados para la página de la verdulería */
-*{
-    box-sizing: border-box;
-}
-/* Estilo general del cuerpo */
 body {
-    font-family:"Baskervville SC" , serif; /* Fuente predeterminada */
-    background-color: #f8f9fa; /* Color de fondo gris claro */
-    color: #333; /* Color de texto principal */
-    margin-top: 60px; /* Margen superior para el contenido principal */
-}  
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; 
+    color: #333; 
+    margin-top: 60px; 
+}
+
+/* Estilo para el encabezado */
+
 header {
-    background-color: #28a745; /* Color de fondo verde */
-    padding: 10px 0; /* Espaciado interno */
-    text-align: left; /* Alineación del texto a la izquierda */
+    background-color: #28a745; 
+    padding: 10px 0; 
 }
 
 header h1 {
-    font-size: 2rem; /* Tamaño grande de fuente para el título */
-    font-family: "Baskerville SC", serif; /* Fuente Baskerville SC */
-    margin: 0; /* Elimina todos los márgenes */
-    padding-left: 1rem; /* Espaciado a la izquierda para separar del borde */
-    border: 2px solid black; /* Borde negro sólido */
+    font-size: 1rem; /* Tamaño grande de fuente para el título */
+    font-family: "Baskervville SC", serif;
+    margin-bottom: 0; /* Elimina el margen inferior del título */
 }
 
 header nav a {
+    text-align: right;
     color: #fff; /* Color de texto blanco */
     text-decoration: none; /* Sin subrayado */
     font-weight: bold; /* Texto en negrita */
@@ -31,7 +27,7 @@ header nav a {
 }
 
 header nav a:hover {
-    color: #ffc107; /* Cambia el color al pasar el ratón */
+    color: #ffc107e3; /* Cambia el color al pasar el ratón */
 }
 
 /* Estilo para el contenido principal */
@@ -40,7 +36,7 @@ section {
 }
 
 .container {
-    max-width: 800px; /* Ancho máximo del contenido */
+    max-width: 500px; /* Ancho máximo del contenido */
     margin: auto; /* Centra el contenido */
 }
 
