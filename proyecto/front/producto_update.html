@@ -9,9 +9,8 @@
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     </head>
     <body>
-      <header id="header">
-        <!-- place navbar here -->
-      </header>
+
+      <header-component></header-component>
       <main>
         <div class="container" id="app">
           <form style="background-color: aliceblue;margin:10px auto ; width: 400px; padding: 20px;">
@@ -37,13 +36,17 @@
             <input type="text" name="imagen" id="imagen" v-model="imagen">  
             <img width="100"   :src="imagen" alt="">
           </div>
+          <div class="mb-3">
+            <label for="cantidad">Cantidad</label>
+            <input type="number" name="cantidad" id="cantidad" v-model="cantidad">
+          </div>
+
+
           <button type="button" class="btn btn-success" v-on:click="modificar()">Grabar</button>
           </form>
         </div>
       </main>
-      <footer>
-        <!-- place footer here -->
-      </footer>
+      <footer-component></footer-component>
       <!-- Bootstrap JavaScript Libraries --> 
        
       <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -51,9 +54,8 @@
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"> </script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"> </script>
-      <script src="/java/productos.js"></script>
 
-      <script src="./js/producto_editar.js"></script>
+      <script src="/C-C_EntregaFinal/proyecto/java/productos.js"></script>
     </body>
     </html>
     
