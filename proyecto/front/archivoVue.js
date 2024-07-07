@@ -63,6 +63,7 @@ template: `
 `
 });
 
+
 app.component('footer-component', {
 template: `
     <footer class="bg-dark text-white text-center py-3">
@@ -72,6 +73,8 @@ template: `
     </footer>
 `
 });
+
+
 
 // Montar la aplicación en el elemento #app
 app.mount('#app');
