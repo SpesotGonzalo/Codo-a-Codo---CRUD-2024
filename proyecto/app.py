@@ -13,6 +13,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 db= SQLAlchemy(app)   #crea el objeto db de la clase SQLAlquemy
 ma=Marshmallow(app)   #crea el objeto ma de de la clase Marshmallow
 
+from controladores.usuario_controlador import *
 
 
 
