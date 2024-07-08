@@ -4,44 +4,73 @@ body {
     color: #333; 
     margin-top: 60px; 
 }
-
-/* Estilo para el encabezado */
+  /* HEADER Y NAV */
 
 header {
     background-color: #28a745; 
     padding: 10px 0; 
 }
 
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 header h1 {
-    font-size: 1rem; /* Tamaño grande de fuente para el título */
+    font-size: 1.5rem;
     font-family: "Baskervville SC", serif;
-    margin-bottom: 0; /* Elimina el margen inferior del título */
+    margin: 0;
 }
 
-header nav a {
-    text-align: right;
-    color: #fff; /* Color de texto blanco */
-    text-decoration: none; /* Sin subrayado */
-    font-weight: bold; /* Texto en negrita */
-    transition: color 0.3s; /* Transición suave para el color */
+nav {
+    display: flex; 
 }
 
-header nav a:hover {
-    color: #ffc107e3; /* Cambia el color al pasar el ratón */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: color 0.3s;
 }
 
-/* Estilo para el contenido principal */
+nav a:hover {
+    color: #ffc107;
+}
+
 section {
-    background-color: #fff; /* Fondo blanco */
+    background-color: #fff; 
 }
 
 .container {
-    max-width: 500px; /* Ancho máximo del contenido */
-    margin: auto; /* Centra el contenido */
+    max-width: 500px; 
+    margin: auto; 
 }
 
-/* Estilo para el pie de página */
+ /* FOOTER */
+
 footer {
-    background-color: #343a40; /* Color de fondo oscuro */
-    color: #fff; /* Color de texto blanco */
+    background-color: #343a40; 
+    color: #fff; 
+    padding: 20px 0; 
+    text-align: center; 
+    position: fixed; 
+    width: 100%; 
+    bottom: 0; 
 }
+
+        /* CARRUSEL */
+
+        .carousel-item {
+            transition: transform 0.6s ease;
+            height: 400px; /* Ajusta la altura deseada de cada imagen */
+            overflow: hidden; /* Oculta el contenido que excede la altura del contenedor */
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            object-fit: cover;
+        }
