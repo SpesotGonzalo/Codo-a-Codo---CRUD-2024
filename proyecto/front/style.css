@@ -65,8 +65,8 @@ footer {
         /* CARRUSEL */
 
         .carousel-item {
-            transition: transform 0.6s ease;
-            height: 400px; /* Ajusta la altura deseada de cada imagen */
+            transition: transform 0.3s ease;
+            height: 400px; 
             overflow: hidden; /* Oculta el contenido que excede la altura del contenedor */
         }
         
