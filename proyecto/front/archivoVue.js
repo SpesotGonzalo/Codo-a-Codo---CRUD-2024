@@ -2,17 +2,18 @@ const app = Vue.createApp({});
 
 app.component('header-component', {
 template: `
-        <header class="bg-success text-white py-3">
+<header class="bg-success text-white py-3">
         <div class="container">
             <div class="header-content d-flex justify-content-between align-items-center">
                 <h1 class="display-5">Verdulería El Huerto</h1>
                 <nav>
-                    <a href="index.html" class="text-white">Inicio</a>
-                    <a href="#" class="text-white">Productos</a>
-                    <a href="#" class="text-white">Cerrar Sesion</a>
+                    <a href="index.html" class="text-white"> Inicio </a>
+                    <a href="productos.html" class="text-white">Productos</a>
+                    <a href="login.html" class="text-white">Cerrar Sesion</a>
                 </nav>
             </div>
         </div>
+</header>
 `
 });
 
