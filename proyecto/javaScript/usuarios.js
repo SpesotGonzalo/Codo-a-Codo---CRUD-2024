@@ -32,26 +32,32 @@ createApp({
             let usuario = {
                 usuario: this.usuario,
                 clave: this.clave,
-                rol:0
-            }
-            var options = {
+                rol: 0 // Ajusta el valor del rol según tu lógica
+            };
+            
+            let url = "https://gonzalospesotcc2.pythonanywhere.com/usuarios"
+            let options = {
                 body: JSON.stringify(usuario),
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                redirect: 'follow'
-            }
-            fetch(this.url, options)
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                
+            };
+        
+            console.log("URL de la solicitud:", url); // Verifica la URL antes de la solicitud
+        
+            fetch(url, options)
                 .then(function () {
                     alert("Registro grabado")
-                    window.location.href = "./index.html";
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert("Error al Grabarr")
-                })
-
-        
+                    window.location.href = "../front/index.html";
+            })
+            .catch(err => {
+                console.error(err);
+                alert("Error al Grabarr")
+                });
         },
+        
         login() {
             usuario=this.usuario
             sessionStorage.setItem("adm",0)
