@@ -1,18 +1,17 @@
-const { createApp } = Vue;
-
+const { createApp } = Vue
 createApp({
     data() {
         return {
             usuarios: [],
-            urlUsuarios: 'http://127.0.0.1:5000/usuarios', // URL para obtener todos los usuarios
-            urlCrearAdmin: 'http://127.0.0.1:5000/crear_admin', // Nueva URL para crear un administrador
+            // esto es para el boton modificar +(location.search.substr(4)===""?'':"/")+location.search.substr(4)
+            url: 'https://gonzalospesotcc2.pythonanywhere.com/usuarios' ,
             error: false,
             cargando: true,
+            /*alta*/
             id: 0,
             usuario: "",
             clave: "",
-            rol: "user", // Por defecto, se creará un usuario normal (no administrador)
-        };
+        }
     },
     methods: {
         fetchData(url) {
@@ -20,70 +19,75 @@ createApp({
                 .then(response => response.json())
                 .then(data => {
                     this.usuarios = data;
-                    this.cargando = false;
+                    this.cargando = false                  
+                    console.log(this.usuarios)
                 })
                 .catch(err => {
                     console.error(err);
-                    this.error = true;
-                });
+                    this.error = true
+                })
         },
+
         grabar() {
             let usuario = {
                 usuario: this.usuario,
                 clave: this.clave,
-                rol: this.rol,
-            };
-
-            let url = this.rol === "admin" ? this.urlCrearAdmin : this.urlUsuarios;
-
+                rol:0
+            }
             var options = {
                 body: JSON.stringify(usuario),
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 redirect: 'follow'
-            };
-
-            fetch(url, options)
-                .then(response => response.json())
-                .then(data => {
-                    alert("Registro grabado");
-                    if (this.rol === "admin") {
-                        window.location.href = "./index.html"; // Redirige a la página de administrador si se creó un admin
-                    } else {
-                        window.location.href = "./login.html"; // Redirige a la página de login si se creó un usuario normal
-                    }
+            }
+            fetch(this.url, options)
+                .then(function () {
+                    alert("Registro grabado")
+                    window.location.href = "../front/inicio.html";
                 })
                 .catch(err => {
                     console.error(err);
-                    alert("Error al Grabar");
-                });
+                    alert("Error al Grabarr")
+                })
         },
         login() {
-            var usuario = this.usuario;
-            var clave = this.clave;
-
-            fetch(this.urlUsuarios)
-                .then(response => response.json())
-                .then(data => {
-                    var foundUser = data.find(u => u.usuario === usuario && u.clave === clave);
-                    if (foundUser) {
-                        if (foundUser.rol === 'admin') {
-                            sessionStorage.setItem("adm", 1);
-                            window.location.href = "./index.html";
-                        } else {
-                            window.location.href = "./index.html";
-                        }
-                    } else {
-                        alert('Usuario o contraseña incorrectos');
+            usuario=this.usuario
+            sessionStorage.setItem("adm",0)
+            var i=0
+            while ( i < this.usuarios.length && this.usuarios[i].usuario != this.usuario  ){
+                i++
+            }
+            if (i<(this.usuarios.length)){
+                if (this.usuarios[i].clave==this.clave ){
+                    if (this.usuarios[i].rol==1){
+                        sessionStorage.setItem("adm",1)  
+                    
+                    window.location.href = "../front/crud.html";
+                }
+                }else{
+                    window.location.href = "../front/inicio.html"
+                }
+            }else{
+                alert('Usuario erronea')
+            }
+            /*for (elemento of this.usuarios){
+                if (elemento.usuario == this.usuario && elemento.clave==this.clave ){
+                    if (elemento.rol=1){
+                        sessionStorage.setItem("adm",1)
                     }
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert("Error al iniciar sesión");
-                });
+                }   
+
+            }*/
+
+
         }
     },
     created() {
-        this.fetchData(this.urlUsuarios);
+        
+        this.fetchData(this.url)
+
+
+
+
     },
-}).mount('#app');
+}).mount('#app')

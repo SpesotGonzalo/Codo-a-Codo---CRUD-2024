@@ -40,16 +40,6 @@ class UsuarioSchema(ma.Schema):
 usuario_schema=UsuarioSchema()            # El objeto usuario_schema es para traer un usuario
 usuarios_schema=UsuarioSchema(many=True)  # El objeto usuarios_schema es para traer multiples registros de usuario
 
-@app.route('/crear_admin', methods=['POST'])
-def crear_admin():
-    usuario = request.json['usuario']
-    clave = request.json['clave']
-    # Aquí se puede agregar lógica adicional para verificar que el usuario que realiza la solicitud tenga permisos de administrador.
-    new_admin = usuario(usuario, clave, 'admin')
-    db.session.add(new_admin)
-    db.session.commit()
-    return usuario_schema.jsonify(new_admin)
-
 # crea los endpoint o rutas (json)
 @app.route('/usuarios',methods=['GET'])
 def get_Usuarios():
@@ -75,7 +65,7 @@ def update_usuario(id):
 
 @app.route('/usuarios', methods=['POST'])  # Solo accesible para administradores
 def create_usuario():
-    if request.json['rol'] == 'admin':
+    if request.json['rol'] != 1:
         return jsonify({"message": "Unauthorized"}), 403
     usuario = request.json['usuario']
     clave = request.json['clave']
@@ -88,7 +78,7 @@ def create_usuario():
 @app.route('/usuarios/<id>', methods=['DELETE'])  # Solo accesible para administradores
 def delete_usuario(id):
     usuario = usuario.query.get(id)
-    if usuario.rol != 'admin':
+    if usuario.rol != 1:
         return jsonify({"message": "Unauthorized"}), 403
     db.session.delete(usuario)
     db.session.commit()
