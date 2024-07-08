@@ -61,7 +61,7 @@ const app = Vue.createApp({
                         throw new Error('Error al grabar');
                     }
                     alert("Registro grabado");
-                    window.location.href = "./crud.html";
+                    window.location.href = "../front/crud.html";
                 })
                 .catch(err => {
                     console.error('Error al grabar:', err);
@@ -96,7 +96,7 @@ const app = Vue.createApp({
                 .then(data => {
                     console.log("Datos modificados:", data);  // Debugging: imprimir los datos modificados
                     alert("Registro modificado");
-                    window.location.href = "./crud.html";
+                    window.location.href = "../front/crud.html";
                 })
                 .catch(err => {
                     console.error("Error en la modificación:", err);  // Debugging: imprimir el error
@@ -139,7 +139,7 @@ app.component('header-component', {
                 <nav>
                     <a href="index.html" class="text-white"> Inicio </a>
                     <a href="productos.html" class="text-white">Productos</a>
-                    <a href="login.html" class="text-white">Cerrar Sesion</a>
+                    <a href="index.html" class="text-white">Cerrar Sesion</a>
                 </nav>
             </div>
         </div>
@@ -200,3 +200,4 @@ app.component('footer-component', {
 
 // Montar la aplicación en el elemento #app
 app.mount('#app');
+

@@ -43,12 +43,14 @@ createApp({
             fetch(this.url, options)
                 .then(function () {
                     alert("Registro grabado")
-                    window.location.href = "../front/inicio.html";
+                    window.location.href = "./index.html";
                 })
                 .catch(err => {
                     console.error(err);
                     alert("Error al Grabarr")
                 })
+
+        
         },
         login() {
             usuario=this.usuario
@@ -64,11 +66,13 @@ createApp({
                     
                     window.location.href = "../front/crud.html";
                 }
-                }else{
-                    window.location.href = "../front/inicio.html"
+                }
+                    if(this.usuarios[i].rol != 1){
+                        console.log("puto")
+                        window.location.href = "../front/inicio.html"
                 }
             }else{
-                alert('Usuario erronea')
+                alert('Usuario erroneo , debe crear un usuario para continuar')
             }
             /*for (elemento of this.usuarios){
                 if (elemento.usuario == this.usuario && elemento.clave==this.clave ){
@@ -91,3 +95,10 @@ createApp({
 
     },
 }).mount('#app')
+
+
+
+function irAregistro() {
+    // Redirige a otro HTML
+    window.location.href = "../front/registro.html";
+}

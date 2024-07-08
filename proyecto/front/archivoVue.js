@@ -9,7 +9,7 @@ template: `
                 <nav>
                     <a href="index.html" class="text-white"> Inicio </a>
                     <a href="productos.html" class="text-white">Productos</a>
-                    <a href="login.html" class="text-white">Cerrar Sesion</a>
+                    <a href="index.html" class="text-white">Cerrar Sesion</a>
                 </nav>
             </div>
         </div>
