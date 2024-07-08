@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap" rel="stylesheet"></head>
     <script src="https://unpkg.com/vue@3.2.22/dist/vue.global.prod.js"></script>
-    <title> Productos </title>
 </head>
 <body>
     <div id="app">
@@ -20,16 +19,51 @@
         
         <!-- Componente Header -->
         <header-component></header-component>
-        
-        <!-- Componente Tarjeta -->
-        <tarjeta-component></tarjeta-component>
+        <div class="container">
+            <h2 class="text-center mb-4">Lista de Productos</h2>
+
+            <div v-if="error">
+                <p>Lo sentimos , ha ocurrido un error.</p>
+            </div>
+            <div v-else>
+                <section v-if="cargando">
+                    <div class="spinner-border"></div>
+                    <p>Cargando .....</p>
+                </section>
+                <section v-else>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Imagenes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="" v-for="producto in productos" :key="producto.id">
+                                <td>{{producto.nombre}}</td>
+                                <td>{{producto.precio}}</td>
+                                <td>{{producto.stock}}</td>
+                                <td>
+                                    <img width="60" :src="producto.imagen" :alt="producto.nombre">
+                                </td>
+                                <td>{{producto.cantidad}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+
+        </div>
 
         <!-- Componente Footer -->
         <footer-component></footer-component>
     </div>
 
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../javaScript/productos.js"></script>
 
-
-    <script src="archivoVue.js"></script>
 </body>
 </html>
