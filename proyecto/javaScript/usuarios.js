@@ -9,6 +9,7 @@ createApp({
             id: 0,
             usuario: "",
             clave: "",
+            rol: 0
         }
     },
     methods: {
@@ -28,33 +29,32 @@ createApp({
         },
 
         grabar() {
+            let url ="https://gonzalospesotcc2.pythonanywhere.com/usuarios"
             let usuario = {
                 usuario: this.usuario,
                 clave: this.clave,
-                rol: 0 // Ajusta el valor del rol según tu lógica
-            };
-            
-            let url = "https://gonzalospesotcc2.pythonanywhere.com/usuarios"
-            let options = {
+                rol: this.rol,
+            }
+            console.log(usuario)
+            var options = {
                 body: JSON.stringify(usuario),
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                
-            };
-        
-            console.log("URL de la solicitud:", url); // Verifica la URL antes de la solicitud
-        
+                headers: { 'Content-Type': 'application/json' },
+                redirect: 'follow'
+            }
+            console.log(options, url)
             fetch(url, options)
-                .then(function () {
-                    alert("Registro grabado")
-                    window.location.href = "../front/index.html";
-            })
-            .catch(err => {
-                console.error(err);
-                alert("Error al Grabarr")
-                });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al grabar');
+                    }
+                    alert("Usuario creado");
+                        window.location.href = "../front/inicio.html";
+                })
+                .catch(err => {
+                    console.error('Error al crear usuario:', err);
+                    alert("Error al crear");
+                })
         },
         
         login() {
@@ -68,12 +68,10 @@ createApp({
                 if (this.usuarios[i].clave==this.clave ){
                     if (this.usuarios[i].rol==1){
                         sessionStorage.setItem("adm",1)  
-                    
-                    window.location.href = "../front/crud.html";
+                        window.location.href = "../front/crud.html";
                 }
                 }
                     if(this.usuarios[i].rol != 1){
-                        console.log("puto")
                         window.location.href = "../front/inicio.html"
                 }
             }else{

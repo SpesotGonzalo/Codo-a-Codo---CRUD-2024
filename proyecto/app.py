@@ -20,7 +20,6 @@ class Producto(db.Model):   # la clase Producto hereda de db.Model de SQLAlquemy
     precio=db.Column(db.Float)
     stock=db.Column(db.Integer)
     imagen=db.Column(db.String(400))
-    cantidad=db.Column(db.Integer)
     def __init__(self,nombre,precio,stock,imagen): #crea el  constructor de la clase
         self.nombre=nombre # no hace falta el id porque lo crea sola mysql por ser auto_incremento
         self.precio=precio
@@ -28,11 +27,15 @@ class Producto(db.Model):   # la clase Producto hereda de db.Model de SQLAlquemy
         self.imagen=imagen
     #  si hay que crear mas tablas , se hace aqui
 
-class usuario(db.Model):
+class Usuario(db.Model):
         id=db.Column(db.Integer, primary_key=True)
         usuario=db.Column(db.String(100))
         clave=db.Column(db.String(100))
         rol=db.Column(db.Integer)
+        def __init__(self,usuario,clave,rol):
+            self.usuario = usuario 
+            self.clave = clave
+            self.rol = rol
 
 class UsuarioSchema(ma.Schema):
     class Meta:
@@ -43,7 +46,7 @@ usuarios_schema=UsuarioSchema(many=True)  # El objeto usuarios_schema es para tr
 # crea los endpoint o rutas (json)
 @app.route('/usuarios',methods=['GET'])
 def get_Usuarios():
-    all_usuarios=usuario.query.all()         # el metodo query.all() lo hereda de db.Model
+    all_usuarios=Usuario.query.all()         # el metodo query.all() lo hereda de db.Model
     result=usuarios_schema.dump(all_usuarios)  # el metodo dump() lo hereda de ma.schema y                                            # trae todos los registros de la tabla
     return jsonify(result)                       # retorna un JSON de todos los registros de la tabla
 
@@ -65,7 +68,7 @@ def create_usuario():
     usuario=request.json['usuario']
     clave=request.json['clave']
     rol=request.json['rol']
-    new_usuario=usuario(usuario,clave,rol)
+    new_usuario=Usuario(usuario,clave,rol)
     db.session.add(new_usuario)
     db.session.commit()
     return usuario_schema.jsonify(new_usuario)
@@ -92,7 +95,7 @@ with app.app_context():
 
 class ProductoSchema(ma.Schema):
     class Meta:
-        fields=('id','nombre','precio','stock','imagen','cantidad')
+        fields=('id','nombre','precio','stock','imagen')
 
 
 producto_schema=ProductoSchema()  # El objeto producto_schema es para traer un producto
@@ -132,7 +135,6 @@ def create_producto():
     precio=request.json['precio']
     stock=request.json['stock']
     imagen=request.json['imagen']
-    cantidad=request.json['cantidad']
     new_producto=Producto(nombre,precio,stock,imagen)
     db.session.add(new_producto)
     db.session.commit() # confirma el alta
