@@ -3,11 +3,9 @@ createApp({
     data() {
         return {
             usuarios: [],
-            // esto es para el boton modificar +(location.search.substr(4)===""?'':"/")+location.search.substr(4)
             url: 'https://gonzalospesotcc2.pythonanywhere.com/usuarios' ,
             error: false,
             cargando: true,
-            /*alta*/
             id: 0,
             usuario: "",
             clave: "",
@@ -15,6 +13,7 @@ createApp({
     },
     methods: {
         fetchData(url) {
+            console.log(url)
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
