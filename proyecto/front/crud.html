@@ -52,16 +52,17 @@
                     <p>Cargando .....</p>
                 </section>
                 <section v-else>
+                    <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Stock</th>
-                                <th scope="col">Imagenes</th>
-                                <th scope="col"></th>
-                                <th scope="col">Acciones</th>
+                                <th scope="col-md-1">ID</th>
+                                <th scope="col-md-2">Nombre</th>
+                                <th scope="col-md-4">Precio</th>
+                                <th scope="col-md-4">Stock</th>
+                                <th scope="col-md-4">Imagenes</th>
+                                <th scope="col-md-4"></th>
+                                <th scope="col-md-4">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -85,14 +86,17 @@
                     </table>
                 </section>
             </div>
+        </div>
+        <br>
+        <br>
 
         </div>
 
     </div>
 
-    <footer class="bg-dark text-white text-center py-3">
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">
-            <span>© 2024 Verdulería Verde Fresco. Todos los derechos reservados.</span>
+            <span>© 2024 Verdulería EL HUERTO. Todos los derechos reservados.</span>
         </div>
     </footer>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
